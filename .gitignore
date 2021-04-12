@@ -1,0 +1,4 @@
+# Project exclude paths
+/java-ee-lesson-one/target/
+/.gitignore/
+/Java-Spring.iml/

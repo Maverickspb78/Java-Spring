@@ -12,6 +12,7 @@
         <module>java-ee-lesson-one</module>
         <module>java-spring-lesson-two</module>
         <module>java-spring-lesson2</module>
+        <module>java-spring-mvc-lesson-three</module>
 
     </modules>
 
