@@ -38,13 +38,14 @@ public class TaskController {
 
 	@GetMapping("/new")
 	public String newProduct(Model model) {
-		// TODO: 09.04.2021 дописать добавление продукта
+
+		model.addAttribute("product", new Product(null, "", "", null));
 		return "task_views/product_form";
 	}
 
-	@GetMapping("/delete")
-	public String removeProduct(Model model) {
-		// TODO: 09.04.2021 дописать удаление продукта
-		return "task_views/index";
-	}
+	@GetMapping("/delete/{id}")
+	public String removeProduct(@PathVariable(value = "id") Long id, Model model) {
+		productRepository.remove(id);
+		return "redirect:/product";
+  }
 }
