@@ -38,6 +38,7 @@ public class TaskController {
 
 	@GetMapping("/new")
 	public String newProduct(Model model) {
+
 		model.addAttribute("product", new Product(null, "", "", null));
 		return "task_views/product_form";
 	}
@@ -46,5 +47,5 @@ public class TaskController {
 	public String removeProduct(@PathVariable(value = "id") Long id, Model model) {
 		productRepository.remove(id);
 		return "redirect:/product";
-	}
+  }
 }
