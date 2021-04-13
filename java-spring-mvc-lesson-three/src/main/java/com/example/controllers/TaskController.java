@@ -39,7 +39,7 @@ public class TaskController {
 	@GetMapping("/new")
 	public String newProduct(Model model) {
 
-		model.addAttribute("product", new Product(null, "", "", null));
+		model.addAttribute("product", new Product());
 		return "task_views/product_form";
 	}
 

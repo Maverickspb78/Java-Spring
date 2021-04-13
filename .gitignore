@@ -2,3 +2,8 @@
 /java-ee-lesson-one/target/
 /.gitignore/
 /Java-Spring.iml/
+/.idea/
+/out/
+/.gitignore/
+
+/java-spring-mvc-lesson-three/target/
