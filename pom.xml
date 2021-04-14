@@ -10,9 +10,9 @@
     <modules>
         <module>Java-ee-homework</module>
         <module>java-ee-lesson-one</module>
-        <module>java-spring-lesson-two</module>
         <module>java-spring-lesson2</module>
         <module>java-spring-mvc-lesson-three</module>
+        <module>java-spring-boot-lesson-four</module>
 
     </modules>
 
