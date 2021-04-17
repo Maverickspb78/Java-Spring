@@ -6,14 +6,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Java-ee-homework" />
-        <module name="java-spring-mvc-lesson-three" />
-        <module name="java-spring-lesson2" />
         <module name="java-ee-lesson-one" />
+        <module name="java-spring-boot-lesson-four" />
+        <module name="Java-ee-homework" />
+        <module name="java-spring-lesson2" />
+        <module name="java-spring-mvc-lesson-three" />
+        <module name="hibernate-block" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="java-spring-lesson-two" target="14" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="java-spring-boot-lesson-four" options="-parameters" />
+    </option>
   </component>
 </project>
