@@ -1,9 +1,13 @@
 # Project exclude paths
 /java-ee-lesson-one/target/
-/.gitignore/
+*/target/
 /Java-Spring.iml/
-/.idea/
+/*.idea/
 /out/
-/.gitignore/
+.gitignore
+.gitignore
+.idea
+java-spring-boot-lesson-four/.mvn/
 
 /java-spring-mvc-lesson-three/target/
+/java-spring-boot-lesson-four/.mvn/

@@ -13,6 +13,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/java-spring-boot-lesson-four/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
