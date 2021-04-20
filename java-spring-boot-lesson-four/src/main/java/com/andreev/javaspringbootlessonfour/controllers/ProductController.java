@@ -32,17 +32,14 @@ public class ProductController {
 
 	@PostMapping("/product_update")
 	public String updateProduct(Product product) {
-		if (product.getId() == null) {
-			productService.add(product);
-		} else {
 			productService.update(product);
-		}
 		return "redirect:/product";
 	}
 
 	@GetMapping("/new")
 	public String newProduct(Model model) {
 		model.addAttribute(new Product());
+		productService.add();
 		return "product_views/product_form";
 	}
 

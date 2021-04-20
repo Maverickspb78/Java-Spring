@@ -1,7 +1,7 @@
 package com.andreev.javaspringbootlessonfour.services;
 
 import com.andreev.javaspringbootlessonfour.entities.Product;
-import com.andreev.javaspringbootlessonfour.repositories.ProductRepository;
+import com.andreev.javaspringbootlessonfour.repositories.ProductDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,30 +10,30 @@ import java.util.List;
 @Service
 public class ProductService {
 
-	private ProductRepository productRepository;
+	private ProductDaoImpl productDaoImpl;
 
 	@Autowired
-	public void setProductRepository(ProductRepository productRepository) {
-		this.productRepository = productRepository;
+	public void setProductDaoImpl(ProductDaoImpl productDaoImpl) {
+		this.productDaoImpl = productDaoImpl;
 	}
 
 	public List<Product> getAllProduct() {
-		return productRepository.findAll();
+		return productDaoImpl.getAllProduct();
 	}
 
 	public Product getById(Long id) {
-		return productRepository.findById(id);
+		return productDaoImpl.getProduct(id);
 	}
 
 	public void remove(Long id) {
-		productRepository.remove(id);
+		productDaoImpl.deleteProduct(id);
 	}
 
-	public void add(Product product) {
-		productRepository.add(product);
+	public void add() {
+		productDaoImpl.addProduct();
 	}
 
 	public void update(Product product) {
-		productRepository.update(product);
+		productDaoImpl.updateProduct(product);
 	}
 }
