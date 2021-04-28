@@ -22,7 +22,7 @@ public class ProductService {
 	}
 
 	public Product getById(Long id) {
-		return productDaoImpl.getProduct(id);
+		return productDaoImpl.getProductById(id);
 	}
 
 	public void remove(Long id) {
