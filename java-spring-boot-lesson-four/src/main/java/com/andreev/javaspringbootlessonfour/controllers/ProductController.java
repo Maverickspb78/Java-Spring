@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -15,13 +18,13 @@ public class ProductController {
 	private ProductService productService;
 
 	@GetMapping
-	public String indexPage(Model model, @RequestParam(name = "titleFilter", required = false) String titleFilter) {
+	public String indexPage(Model model,
+							@RequestParam(name = "titleFilter", required = false) Optional<String> titleFilter,
+							@RequestParam(name = "minPrice", required = false) Optional<BigDecimal> minPrice,
+							@RequestParam(name = "maxPrice", required = false) Optional<BigDecimal> maxPrice) {
 		// TODO: 23.04.2021 Добавить обработку параметров формы
-		if (titleFilter == null || titleFilter.isBlank()) {
-			model.addAttribute("products", productService.getAllProduct());
-		} else {
-			model.addAttribute("products", productService.getByTitle(titleFilter));
-		}
+
+		model.addAttribute("products",productService.getByParams(titleFilter,minPrice,maxPrice));
 		return "product_views/index";
 	}
 

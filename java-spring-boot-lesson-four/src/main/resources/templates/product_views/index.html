@@ -14,12 +14,16 @@
 <div class="container">
     <div class="col-10 mx-auto mt-3">
         <div class="row">
-            <div class="col-6">
+            <div class="col-3">
                 <h1>Product list</h1>
             </div>
-            <div class="col-6">
+            <div class="col-9">
                 <form class="form-inline" th:method="get">
                     <!-- TODO добавить поля фильтров из ДЗ -->
+                    <input type="number" th:value="${param.minPrice}" class="form-control-md" id="minPrice"
+                           name="minPrice" placeholder="Min price">
+                    <input type="number" th:value="${param.maxPrice}" class="form-control-md" id="maxPrice"
+                           name="maxPrice" placeholder="Max price">
                     <input type="text" th:value="${param.titleFilter}" class="form-control-md" id="title-filter"
                            name="titleFilter" placeholder="Find">
                     <button type="submit" class="btn btn-outline-dark"><i class="fas fa-search"></i></button>
