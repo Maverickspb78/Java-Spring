@@ -17,9 +17,9 @@ public class ListService {
     private CustomerDaoImpl customerDao;
     private ProductDaoImpl productDao;
 
-   public List<Customer> getCustomersProduct(Long id){
-       return productDao.getCustomersProduct(id);
-   }
+//   public List<Customer> getCustomersProduct(Long id){
+//       return productDao.getCustomersProduct(id);
+//   }
 
    public Product getProductById(Long id){
        return productDao.getProductById(id);

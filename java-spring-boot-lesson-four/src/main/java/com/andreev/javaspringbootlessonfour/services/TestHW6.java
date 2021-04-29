@@ -22,20 +22,20 @@ public class TestHW6 {
 
     public static void main(String[] args) {
 
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        ListService listService = context.getBean(ListService.class);
+//        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+//        ListService listService = context.getBean(ListService.class);
 
 //        prepareData();
 //        work();
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getCustomersProduct(1L));
-        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getCustomersProduct(2L));
-        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getCustomersProduct(3L));
-        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getCustomersProduct(4L));
-        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getProductsCustomer(1L));
-        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getProductsCustomer(2L));
-        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getProductsCustomer(3L));
-        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getProductsCustomer(4L));
+//        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++");
+//        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getCustomersProduct(1L));
+//        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getCustomersProduct(2L));
+//        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getCustomersProduct(3L));
+//        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getCustomersProduct(4L));
+//        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getProductsCustomer(1L));
+//        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getProductsCustomer(2L));
+//        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getProductsCustomer(3L));
+//        System.out.println("\n"+"\n"+"\n"+"\n"+listService.getProductsCustomer(4L));
 
 
 
