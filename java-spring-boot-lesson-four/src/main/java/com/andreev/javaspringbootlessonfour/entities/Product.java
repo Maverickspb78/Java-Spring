@@ -1,60 +1,64 @@
 package com.andreev.javaspringbootlessonfour.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
-import java.util.List;
-
-@NoArgsConstructor
-//@RequiredArgsConstructor
-@Getter
-@Setter
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "products")
-@Component
 public class Product {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "title")
+	private String title;
 
-//	@Column(name = "description")
-//	private String description;
+	@Column(name = "description")
+	private String description;
 
 	@Column(name = "price")
-	private int price;
+	private BigDecimal price;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			name = "purchases",
-			joinColumns = @JoinColumn(name = "product_id"),
-			inverseJoinColumns = @JoinColumn(name = "customers_id")
-	)
-	private List<Customer> customers;
+	public Product() {
+	}
 
+	public Product(Long id, String title, String description, BigDecimal price) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.price = price;
+	}
 
-//	public Product(Long id, String name, String description, int price) {
-//		this.id = id;
-//		this.name = name;
-////		this.description = description;
-//		this.price = price;
-//	}
+	public Long getId() {
+		return id;
+	}
 
-	@Override
-	public String toString() {
-		return "Product{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", price=" + price +
-				'}';
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 }

@@ -1,39 +1,58 @@
 package com.andreev.javaspringbootlessonfour.services;
 
 import com.andreev.javaspringbootlessonfour.entities.Product;
-import com.andreev.javaspringbootlessonfour.repositories.ProductDaoImpl;
+import com.andreev.javaspringbootlessonfour.repositories.ProductRepository;
+import com.andreev.javaspringbootlessonfour.repositories.specifications.ProductSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
 
-	private ProductDaoImpl productDaoImpl;
+	private ProductRepository productRepository;
 
 	@Autowired
-	public void setProductDaoImpl(ProductDaoImpl productDaoImpl) {
-		this.productDaoImpl = productDaoImpl;
+	public void setProductRepository(ProductRepository productRepository) {
+		this.productRepository = productRepository;
 	}
 
+	@Transactional
 	public List<Product> getAllProduct() {
-		return productDaoImpl.getAllProduct();
+		return productRepository.findAll();
 	}
 
+	@Transactional
 	public Product getById(Long id) {
-		return productDaoImpl.getProduct(id);
+		return productRepository.findById(id).get();
 	}
 
+	@Transactional
 	public void remove(Long id) {
-		productDaoImpl.deleteProduct(id);
+		productRepository.deleteById(id);
 	}
 
-	public void add() {
-		productDaoImpl.addProduct();
+	@Transactional
+	public void addOrUpdate(Product product) {
+		productRepository.save(product);
 	}
 
-	public void update(Product product) {
-		productDaoImpl.updateProduct(product);
+	@Transactional
+	public List<Product> getByTitle(String nameFilter) {
+//		if (!nameFilter.contains("%")) {
+//			nameFilter = String.join("", "%", nameFilter, "%");
+//		}
+//		return productRepository.findProductByTitleLike(nameFilter);
+
+		// select * from Product p where 1 = 1 and p.title like nameFilter;
+
+		Specification<Product> specification = Specification.where(null);
+		specification = specification.and(ProductSpecification.titleLike(nameFilter));
+
+		return productRepository.findAll(specification);
 	}
 }

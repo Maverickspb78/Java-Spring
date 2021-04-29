@@ -16,7 +16,7 @@ public class ProductDaoImpl implements ProductDao {
 
 
     private List<Product> products;
-@Autowired
+
     private Product product;
 @Autowired
     private FactoryUtil factoryUtil;
@@ -78,8 +78,8 @@ public class ProductDaoImpl implements ProductDao {
         session = factoryUtil.getFactory().getCurrentSession();
         session.beginTransaction();
         product = session.get(Product.class, product.getId());
-        product.setName(productForm.getName());
-//        product.setDescription(productForm.getDescription());
+        product.setTitle(productForm.getTitle());
+        product.setDescription(productForm.getDescription());
         product.setPrice(productForm.getPrice());
         session.getTransaction().commit();
         } finally {
@@ -106,20 +106,20 @@ public class ProductDaoImpl implements ProductDao {
 
     }
 
-    public List<Customer> getCustomersProduct(Long id){
-        List<Customer> customers;
-
-        try {
-            session = factoryUtil.getFactory().getCurrentSession();
-            session.beginTransaction();
-            product = session.get(Product.class, id);
-            customers = product.getCustomers();
-            session.getTransaction().commit();
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-        }
-        return customers;
-    }
+//    public List<Customer> getCustomersProduct(Long id){
+//        List<Customer> customers;
+//
+//        try {
+//            session = factoryUtil.getFactory().getCurrentSession();
+//            session.beginTransaction();
+//            product = session.get(Product.class, id);
+//            customers = product.getCustomers();
+//            session.getTransaction().commit();
+//        } finally {
+//            if (session != null) {
+//                session.close();
+//            }
+//        }
+//        return customers;
+//    }
 }
