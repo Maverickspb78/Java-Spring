@@ -23,14 +23,15 @@ public class ProductController {
 	private ProductService productService;
 
 	@GetMapping
-
 	public String indexPage(Model model,
 	                        @RequestParam(name = "titleFilter", required = false) Optional<String> titleFilter,
 	                        @RequestParam(name = "min", required = false) Optional<BigDecimal> min,
 	                        @RequestParam(name = "max", required = false) Optional<BigDecimal> max,
 	                        @RequestParam(name = "page", required = false) Optional<Integer> page,
-	                        @RequestParam(name = "size", required = false) Optional<Integer> size) {
-		model.addAttribute("products", productService.getByParams(titleFilter, min, max, page, size));
+	                        @RequestParam(name = "size", required = false) Optional<Integer> size,
+							@RequestParam(name = "sort", required = false) Optional <String> sort,
+							@RequestParam(name = "direction", required = false) Optional<Boolean> direction) {
+		model.addAttribute("products", productService.getByParams(titleFilter, min, max, page, size, sort, direction));
 
 		return "product_views/index";
 	}
