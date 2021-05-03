@@ -1,50 +1,49 @@
 package com.andreev.javaspringbootlessonfour.entities;
 
 import javax.persistence.*;
-
+import java.math.BigDecimal;
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 public class Product {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private long id;
+	private Long id;
 
-	@Column(name = "name")
-	private String name;
+	@Column(name = "title")
+	private String title;
 
 	@Column(name = "description")
 	private String description;
 
 	@Column(name = "price")
-	private int price;
+	private BigDecimal price;
 
 	public Product() {
 	}
 
-	public Product(long id, String name, String description, int price) {
+	public Product(Long id, String title, String description, BigDecimal price) {
 		this.id = id;
-		this.name = name;
+		this.title = title;
 		this.description = description;
 		this.price = price;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
@@ -55,11 +54,11 @@ public class Product {
 		this.description = description;
 	}
 
-	public int getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 }
