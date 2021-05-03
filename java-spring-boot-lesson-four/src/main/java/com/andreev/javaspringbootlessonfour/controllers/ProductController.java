@@ -8,10 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.util.Optional;
+
 
 @Controller
 @RequestMapping("/product")
@@ -21,6 +23,7 @@ public class ProductController {
 	private ProductService productService;
 
 	@GetMapping
+
 	public String indexPage(Model model,
 	                        @RequestParam(name = "titleFilter", required = false) Optional<String> titleFilter,
 	                        @RequestParam(name = "min", required = false) Optional<BigDecimal> min,
@@ -28,6 +31,7 @@ public class ProductController {
 	                        @RequestParam(name = "page", required = false) Optional<Integer> page,
 	                        @RequestParam(name = "size", required = false) Optional<Integer> size) {
 		model.addAttribute("products", productService.getByParams(titleFilter, min, max, page, size));
+
 		return "product_views/index";
 	}
 

@@ -4,8 +4,10 @@ import com.andreev.javaspringbootlessonfour.entities.Product;
 import com.andreev.javaspringbootlessonfour.repositories.ProductRepository;
 import com.andreev.javaspringbootlessonfour.repositories.specifications.ProductSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,8 +27,10 @@ public class ProductService {
 	}
 
 	@Transactional
+
 	public Optional<Product> getById(Long id) {
 		return productRepository.findById(id);
+
 	}
 
 	@Transactional
@@ -40,6 +44,7 @@ public class ProductService {
 	}
 
 	@Transactional
+
 	public Page<Product> getByParams(Optional<String> nameFilter,
 	                                 Optional<BigDecimal> min,
 	                                 Optional<BigDecimal> max,
@@ -61,5 +66,6 @@ public class ProductService {
 
 		return productRepository.findAll(specification,
 				PageRequest.of(page.orElse(1) - 1, size.orElse(4)));
+
 	}
 }

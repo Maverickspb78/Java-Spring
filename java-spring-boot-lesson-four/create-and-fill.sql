@@ -29,9 +29,11 @@ CREATE TABLE purchases (
     customers_id int,
     FOREIGN KEY (customers_id) REFERENCES customers(id),
     product_id int,
-    FOREIGN KEY (product_id) REFERENCES products(id)
-);
+
 
 INSERT INTO purchases (customers_id, product_id)
 VALUES (1,1), (1,4), (2,2), (2,3), (3,3), (4,4);
+
+
+
 

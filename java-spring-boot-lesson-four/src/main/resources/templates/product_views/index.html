@@ -13,6 +13,7 @@
 <div class="container">
     <div class="col-10 mx-auto mt-3">
         <div class="row">
+
             <div class="col-3">
                 <h1>Product list</h1>
             </div>
@@ -22,6 +23,7 @@
                            name="min" placeholder="Min">
                     <input type="number" th:value="${param.max}" class="form-control-md" id="max"
                            name="max" placeholder="Max">
+
                     <input type="text" th:value="${param.titleFilter}" class="form-control-md" id="title-filter"
                            name="titleFilter" placeholder="Find">
                     <button type="submit" class="btn btn-outline-dark"><i class="fas fa-search"></i></button>

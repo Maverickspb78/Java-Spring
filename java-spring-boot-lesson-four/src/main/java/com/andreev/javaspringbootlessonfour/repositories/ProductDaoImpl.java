@@ -1,46 +1,43 @@
 package com.andreev.javaspringbootlessonfour.repositories;
 
+import com.andreev.javaspringbootlessonfour.entities.Customer;
 import com.andreev.javaspringbootlessonfour.entities.Product;
+import com.andreev.javaspringbootlessonfour.services.FactoryUtil;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
+
 import java.util.List;
 
 @Service
 public class ProductDaoImpl implements ProductDao {
 
-    List<Product> products;
-    Product product = new Product();
-    SessionFactory factory;
+
+    private List<Product> products;
+
+    private Product product;
+@Autowired
+    private FactoryUtil factoryUtil;
     Session session = null;
 
-    public ProductDaoImpl() {
-        factory = getFactory();
-        products = new ArrayList<>();
-
-    }
-    public SessionFactory getFactory(){
-        SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Product.class)
-                .buildSessionFactory();
-        return factory;
+    @Autowired
+    public void setFactory(FactoryUtil factoryUtil){
+        this.factoryUtil = factoryUtil;
     }
 
     @Override
     public List<Product> getAllProduct() {
         try {
-            session = getFactory().getCurrentSession();
+            session = factoryUtil.getFactory().getCurrentSession();
             session.beginTransaction();
             products = session.createQuery("from Product").getResultList();
             System.out.println(products);
             session.getTransaction().commit();
         } finally {
             session.close();
-            factory.close();
+            factoryUtil.getFactory().close();
         }
         return products;
     }
@@ -48,27 +45,29 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void addProduct() {
         try {
-            session = getFactory().getCurrentSession();
+            session = factoryUtil.getFactory().getCurrentSession();
             session.beginTransaction();
             product = new Product();
             session.save(product);
             session.getTransaction().commit();
         } finally {
             session.close();
-            factory.close();
+            factoryUtil.getFactory().close();
         }
     }
 
     @Override
-    public Product getProduct(long id) {
+    public Product getProductById(Long id) {
+
         try {
-        session = getFactory().getCurrentSession();
+        session = factoryUtil.getFactory().getCurrentSession();
         session.beginTransaction();
         product = session.get(Product.class, id);
-        System.out.println(product);
+        session.getTransaction().commit();
         } finally {
-            session.close();
-            factory.close();
+            if (session != null){
+                session.close();
+            }
         }
         return product;
     }
@@ -76,32 +75,53 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void updateProduct(Product productForm) {
         try{
-        session = getFactory().getCurrentSession();
+        session = factoryUtil.getFactory().getCurrentSession();
         session.beginTransaction();
         product = session.get(Product.class, product.getId());
+
 //        product.setName(productForm.getName());
 //        product.setDescription(productForm.getDescription());
+
         product.setPrice(productForm.getPrice());
         session.getTransaction().commit();
         } finally {
-            session.close();
-            factory.close();
+            if (session != null){
+                session.close();
+            }
         }
 
     }
 
     @Override
-    public void deleteProduct(long id) {
+    public void deleteProduct(Long id) {
         try{
-        session = getFactory().getCurrentSession();
+        session = factoryUtil.getFactory().getCurrentSession();
         session.beginTransaction();
         product = session.get(Product.class, id);
         session.delete(product);
         session.getTransaction().commit();
         } finally {
-            session.close();
-            factory.close();
+            if (session != null){
+                session.close();
+            }
         }
 
     }
+
+//    public List<Customer> getCustomersProduct(Long id){
+//        List<Customer> customers;
+//
+//        try {
+//            session = factoryUtil.getFactory().getCurrentSession();
+//            session.beginTransaction();
+//            product = session.get(Product.class, id);
+//            customers = product.getCustomers();
+//            session.getTransaction().commit();
+//        } finally {
+//            if (session != null) {
+//                session.close();
+//            }
+//        }
+//        return customers;
+//    }
 }

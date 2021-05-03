@@ -9,17 +9,26 @@
     <form th:action="@{product_update}" th:method="post" th:object="${product}">
       <input type="hidden" th:field="*{id}">
       <div class="mb-3">
+
         <!-- НАИМЕНОВАНИЕ ПРОДУКТА -->
         <input type="text" class="form-control" th:field="*{title}" placeholder="Enter title">
+
+        <label>Name</label>
+        <input type="text" class="form-control" th:field="*{title}" placeholder="Enter name">
+
       </div>
       <div class="mb-3">
         <input type="text" class="form-control" th:field="*{description}" placeholder="Enter description">
       </div>
       <div class="mb-3">
+
+        <label>Price</label>
+
         <input type="text" class="form-control" th:field="*{price}" placeholder="Enter price">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
 
 
   </div>

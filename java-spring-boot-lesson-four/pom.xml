@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.andreev</groupId>
     <artifactId>java-spring-boot-lesson-four</artifactId>
@@ -51,7 +51,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
@@ -64,6 +63,6 @@
                 </configuration>
             </plugin>
         </plugins>
+    </plugins>
     </build>
-
 </project>
