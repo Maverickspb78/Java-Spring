@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<body th:fragment="params">
+    th:href="@{/product(
+    page=${products.number},
+    size=${products.size},
+    titleFilter=${param.titleFilter},
+    minPrice=${param.minPrice},
+    maxPrice=${param.maxPrice}
+)}"
+</body>
+</html>

@@ -29,4 +29,8 @@ public class FactoryUtil {
     public void close() {
         factory.close();
     }
+
+    public SessionFactory getFactory() {
+        return factory;
+    }
 }

@@ -18,7 +18,7 @@ public class ProductDaoImpl implements ProductDao {
     private List<Product> products;
 
     private Product product;
-@Autowired
+
     private FactoryUtil factoryUtil;
     Session session = null;
 
