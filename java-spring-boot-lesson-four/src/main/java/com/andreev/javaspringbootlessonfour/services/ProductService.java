@@ -56,6 +56,7 @@ public class ProductService {
 			specification = specification.and(ProductSpecification.titleLike(nameFilter.get()));
 		}
 
+
 		if (min.isPresent()) {
 			specification = specification.and(ProductSpecification.ge(min.get()));
 		}
@@ -74,6 +75,7 @@ public class ProductService {
 		}
 		return productRepository.findAll(specification,
 				PageRequest.of(page.orElse(1) - 1, size.orElse(4), Sort.Direction.ASC, (column)));
+
 
 	}
 }

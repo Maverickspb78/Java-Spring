@@ -2,6 +2,7 @@ package com.andreev.javaspringbootlessonfour.repositories.specifications;
 
 import com.andreev.javaspringbootlessonfour.entities.Product;
 import org.springframework.data.jpa.domain.Specification;
+import java.math.BigDecimal;
 
 
 import java.math.BigDecimal;
@@ -17,6 +18,7 @@ public class ProductSpecification {
 	}
 
 
+
 	public static Specification<Product> ge(BigDecimal min) {
 		return (root, query, builder) -> builder.greaterThanOrEqualTo(root.get("price"), min);
 	}
@@ -24,5 +26,4 @@ public class ProductSpecification {
 	public static Specification<Product> le(BigDecimal max) {
 		return (root, query, builder) -> builder.lessThanOrEqualTo(root.get("price"), max);
 	}
-
 }
