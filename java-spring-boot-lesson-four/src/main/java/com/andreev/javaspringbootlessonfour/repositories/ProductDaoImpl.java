@@ -78,8 +78,10 @@ public class ProductDaoImpl implements ProductDao {
         session = factoryUtil.getFactory().getCurrentSession();
         session.beginTransaction();
         product = session.get(Product.class, product.getId());
-        product.setTitle(productForm.getTitle());
-        product.setDescription(productForm.getDescription());
+
+//        product.setName(productForm.getName());
+//        product.setDescription(productForm.getDescription());
+
         product.setPrice(productForm.getPrice());
         session.getTransaction().commit();
         } finally {
