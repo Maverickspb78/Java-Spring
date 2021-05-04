@@ -26,8 +26,8 @@ public class ProductService {
 		this.productRepository = productRepository;
 	}
 
-	@Transactional
 
+	@Transactional
 	public Optional<Product> getById(Long id) {
 		return productRepository.findById(id);
 
@@ -44,7 +44,6 @@ public class ProductService {
 	}
 
 	@Transactional
-
 	public Page<Product> getByParams(Optional<String> nameFilter,
 	                                 Optional<BigDecimal> min,
 	                                 Optional<BigDecimal> max,
@@ -56,6 +55,7 @@ public class ProductService {
 			specification = specification.and(ProductSpecification.titleLike(nameFilter.get()));
 		}
 
+
 		if (min.isPresent()) {
 			specification = specification.and(ProductSpecification.ge(min.get()));
 		}
@@ -66,6 +66,5 @@ public class ProductService {
 
 		return productRepository.findAll(specification,
 				PageRequest.of(page.orElse(1) - 1, size.orElse(4)));
-
 	}
 }

@@ -9,10 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
 import java.util.Optional;
+
 
 
 @Controller
@@ -23,6 +25,7 @@ public class ProductController {
 	private ProductService productService;
 
 	@GetMapping
+
 
 	public String indexPage(Model model,
 	                        @RequestParam(name = "titleFilter", required = false) Optional<String> titleFilter,
