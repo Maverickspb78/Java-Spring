@@ -33,6 +33,11 @@ public class ProductService {
 	}
 
 	@Transactional
+	public List<Product> findAll(){
+		return productRepository.findAll();
+	}
+
+	@Transactional
 	public void remove(Long id) {
 		productRepository.deleteById(id);
 	}
