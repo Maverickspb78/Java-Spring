@@ -26,6 +26,7 @@
         <module>java-spring-mvc-lesson-three</module>
         <module>java-spring-boot-lesson-four</module>
         <module>hibernate-block</module>
+        <module>spring-lesson10</module>
 
     </modules>
 
