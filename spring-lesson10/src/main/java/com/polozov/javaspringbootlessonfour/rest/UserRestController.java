@@ -3,8 +3,9 @@ package com.polozov.javaspringbootlessonfour.rest;
 import com.polozov.javaspringbootlessonfour.dto.ProductDTO;
 import com.polozov.javaspringbootlessonfour.dto.UserDTO;
 
-import com.polozov.javaspringbootlessonfour.entities.Product;
 import com.polozov.javaspringbootlessonfour.entities.User;
+import com.polozov.javaspringbootlessonfour.mappers.ProductMapper;
+import com.polozov.javaspringbootlessonfour.mappers.UserMapper;
 import com.polozov.javaspringbootlessonfour.services.UserService;
 import com.polozov.javaspringbootlessonfour.services.exceptions.NotFoundException;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -14,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Tag(name = "User API", description = "API to manipulate user resources")
 @RestController
@@ -31,7 +31,7 @@ public class UserRestController {
 	@GetMapping(path = "/{id}/id", produces = "application/json")
 	public UserDTO findById(@PathVariable("id") Long id) {
 		User user = service.findById(id).orElseThrow(NotFoundException::new);
-		return toDTO(user);
+		return saveUserDTO(user);
 	}
 
 	@GetMapping(path = "/list", produces = "application/json")
@@ -61,25 +61,11 @@ public class UserRestController {
 		return new ResponseEntity<>("Entity not found", HttpStatus.NOT_FOUND);
 	}
 
-	private UserDTO toDTO(User user) {
-		return UserDTO.builder()
-				.id(user.getId())
-				.login(user.getLogin())
-				.nickname("little-" + user.getLogin())
-				.productDTOS(toDTOs(user.getProducts()))
-				.build();
-	}
-
-	private List<ProductDTO> toDTOs(List<Product> products) {
-		return products.stream().map(p -> toDTO(p)).collect(Collectors.toList());
-	}
-
-	private ProductDTO toDTO(Product product) {
-		return ProductDTO.builder()
-				.id(product.getId())
-				.title(product.getTitle())
-				.description(product.getDescription())
-				.price(product.getPrice())
-				.build();
+	public UserDTO saveUserDTO (User user){
+		UserDTO userDTO = UserMapper.MAPPER.fromUser(user);
+		List<ProductDTO> productDTOList = ProductMapper.MAPPER.fromProductList(user.getProducts());
+		userDTO.setProductDTOS(productDTOList);
+		userDTO.setNickname("Little - " + user.getLogin());
+		return userDTO;
 	}
 }
